@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Science Quiz for Kids! 🌍</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #2d3748;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header .emoji {
+      font-size: 3em;
+    }
+
+    .content {
+      padding: 30px;
+    }
+
+    /* Login Section Styles */
+    #accessSection {
+      text-align: center;
+    }
+
+    #fileDisplay {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #667eea;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    #accessSection h2 {
+      font-size: 1.5em;
+      color: #4a5568;
+      margin-bottom: 20px;
+    }
+
+    .password-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    #codeInput {
+      font-size: 18px;
+      padding: 15px 50px 15px 20px;
+      width: 300px;
+      border-radius: 15px;
+      border: 3px solid #667eea;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      transition: all 0.3s;
+    }
+
+    #codeInput:focus {
+      outline: none;
+      border-color: #f5576c;
+      box-shadow: 0 0 15px rgba(245, 87, 108, 0.3);
+    }
+
+    #toggleEye {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 24px;
+      user-select: none;
+    }
+
+    .btn {
+      padding: 15px 40px;
+      font-size: 20px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn:disabled {
+      background: #cbd5e0;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    }
+
+    .btn-warning {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      color: #2d3748;
+    }
+
+    #contactLink {
+      display: inline-block;
+      margin-top: 10px;
+      color: #667eea;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    #contactLink:hover {
+      color: #f5576c;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #e53e3e;
+    }
+
+    #tipsArea {
+      margin-top: 25px;
+      padding: 20px;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      border-radius: 15px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #2d3748;
+      text-align: left;
+    }
+
+    /* Main Content Styles */
+    #mainContent h1 {
+      font-size: 2.2em;
+      color: #667eea;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Reviewer Section */
+    .reviewer details {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      margin-bottom: 15px;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 3px solid #667eea;
+    }
+
+    .reviewer summary {
+      padding: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s;
+      color: #2d3748;
+    }
+
+    .reviewer summary:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .reviewer ul {
+      padding: 20px 40px;
+      list-style-type: none;
+    }
+
+    .reviewer li {
+      padding: 10px 0;
+      font-size: 1.1em;
+      line-height: 1.6;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .reviewer li::before {
+      content: "🌟";
+      position: absolute;
+      left: 0;
+      font-size: 1.2em;
+    }
+
+    .reviewer strong {
+      color: #667eea;
+    }
+
+    /* Quiz Section */
+    .question {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      border: 3px solid #f5576c;
+    }
+
+    .question p {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2d3748;
+    }
+
+    .question label {
+      display: block;
+      padding: 12px;
+      margin: 8px 0;
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.1em;
+    }
+
+    .question label:hover {
+      background: #fed6e3;
+      transform: translateX(5px);
+    }
+
+    input[type="radio"] {
+      transform: scale(1.5);
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .correct {
+      color: #38a169;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .wrong {
+      color: #e53e3e;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .correct::before {
+      content: "✨ ";
+    }
+
+    .wrong::before {
+      content: "💡 ";
+    }
+
+    #result {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    #result h2 {
+      font-size: 2.5em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #finishBtn {
+      font-size: 2em;
+      padding: 20px 50px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    /* Contact Modal */
+    #contactModalBG {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    #contactModal {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    #contactModal h2 {
+      margin-top: 0;
+      font-size: 1.8em;
+      text-align: center;
+      color: #667eea;
+      margin-bottom: 25px;
+    }
+
+    #contactModal label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #4a5568;
+      font-size: 1.1em;
+    }
+
+    #contactModal input,
+    #contactModal textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 2px solid #cbd5e0;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      transition: all 0.3s;
+    }
+
+    #contactModal input:focus,
+    #contactModal textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+    }
+
+    #contactModal textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      #codeInput {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="emoji">🌍 🔬 ⚗️</div>
+      <h1>Science Adventure!</h1>
+    </div>
+
+    <div class="content">
+      <div id="accessSection">
+        <p id="fileDisplay"></p>
+        <h2>🔐 Enter Access Code: '12345'</h2>
+        
+        <div class="password-container">
+          <input type="password" id="codeInput" placeholder="Type your code here...">
+          <span id="toggleEye">👁️</span>
+        </div>
+        
+        <br>
+        <button type="button" id="accessSubmit" class="btn btn-primary">Login</button>
+
+        <div>
+          <span id="contactLink">📧 Need Help? Contact Us!</span>
+        </div>
+
+        <p id="message" aria-live="polite"></p>
+        <div id="tipsArea">Loading tips...</div>
+      </div>
+
+      <div id="mainContent" style="display:none;">
+        <div id="reviewerSection">
+          <h1>🌟 Science 6 Review 🌟<br>Quarter 4 Module 1</h1>
+     
+          <section class="reviewer">
+            <!-- ==================== START OF REVIEWER ==================== -->
+            <details>
+              <summary>🔑 Key Concepts and Main Ideas</summary>
+              <ul>
+                <li>Earthquakes and volcanic eruptions cause changes on the Earth's surface.</li>
+                <li>Earthquakes result from movements within the Earth's crust.</li>
+                <li>Volcanic eruptions involve the release of magma, gases, ash, and lava.</li>
+                <li>Both natural events can cause destruction to landforms and structures.</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>📖 Important Definitions</summary>
+              <ul>
+                <li><strong>Earthquake</strong> – A sudden and violent shaking of the ground caused by movements within the Earth's crust.</li>
+                <li><strong>Fault</strong> – A break in the Earth's crust where movement occurs.</li>
+                <li><strong>Focus</strong> – The origin of an earthquake where it begins.</li>
+                <li><strong>Epicenter</strong> – The area directly above the focus.</li>
+                <li><strong>Magma</strong> – Molten rocks found beneath the Earth's surface.</li>
+                <li><strong>Lava</strong> – Molten rock that flows on the Earth's surface.</li>
+                <li><strong>Volcano</strong> – A crack on Earth's surface where lava, steam, and ash escape.</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>📏 Measurement Scales</summary>
+              <ul>
+                <li><strong>Richter Scale</strong> – Measures the magnitude of an earthquake.</li>
+                <li><strong>Mercalli Scale</strong> – Measures the intensity or damage caused by an earthquake.</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>⚡ Types of Earthquakes</summary>
+              <ul>
+                <li><strong>Tectonic Earthquake</strong> – Caused by sudden movement of tectonic plates.</li>
+                <li><strong>Volcanic Earthquake</strong> – Occurs due to volcanic activity.</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>🌐 Plate Boundaries</summary>
+              <ul>
+                <li><strong>Convergent</strong> – Plates collide.</li>
+                <li><strong>Divergent</strong> – Plates move apart.</li>
+                <li><strong>Transform</strong> – Plates slide past each other.</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>🌋 Volcanic Eruption Process</summary>
+              <ul>
+                <li>Magma forms beneath the Earth's surface.</li>
+                <li>Magma rises and collects in magma chambers.</li>
+                <li>Gas pressure increases.</li>
+                <li>Gases expand as magma rises through the conduit.</li>
+                <li>Magma explodes and exits through the crater.</li>
+                <li>Lava is ejected onto the Earth's surface.</li>
+              </ul>
+            </details>
+
+            <details>
+              <summary>💡 Possible Exam Questions (With Answers)</summary>
+              <ul>
+                <li>What is the origin of an earthquake? → Focus</li>
+                <li>What scale measures earthquake magnitude? → Richter Scale</li>
+                <li>What molten rock reaches the surface? → Lava</li>
+                <li>Where do tectonic plates collide? → Convergent boundary</li>
+                <li>What happens to gas pressure during eruption? → It increases</li>
+              </ul>
+            </details>
+          </section>
+     
+          <button onclick="showQuiz()" class="btn btn-success">🎯 Start Quiz!</button>
+        </div>
+
+        <div id="quizSection" style="display:none;">
+          <h1>📝 Quiz Time! 📝<br>Science 6 - Quarter 4 Module 1</h1>
+          <p style="font-size: 18px; font-weight: 600; margin: 0 0 20px 0; text-align: center; color: #667eea;">
+            Multiple-Choice Quiz (random items)
+          </p>
+          <form id="quizForm"></form>
+
+          <div class="nav-buttons">
+            <button id="finishBtn" class="btn">🏆 Get Score</button>
+            <button type="button" onclick="refreshQuiz()" class="btn btn-warning">🔄 Restart Quiz</button>
+            <button type="button" onclick="backToReviewer()" class="btn btn-primary">📚 Back to Review</button>
+          </div>
+          <div id="result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT POPUP MODAL -->
+  <div id="contactModalBG">
+    <div id="contactModal">
+      <h2>📬 Contact Form</h2>
+      <p style="text-align: center; margin-bottom: 20px; color: #4a5568;">
+        Fill in your details and we'll contact you soon!
+      </p>
+
+      <label>👤 Name:</label>
+      <input id="c_name" type="text">
+
+      <label>📱 Contact No.:</label>
+      <input id="c_contact" type="text">
+
+      <label>💬 Social Media Account:</label>
+      <input id="c_social" type="text">
+
+      <label>✉️ Request / Comment:</label>
+      <textarea id="c_request"></textarea>
+
+      <button id="c_submit" class="btn btn-success" style="width: 100%;">Send Message</button>
+      <button id="c_close" class="btn" style="width: 100%; background: #718096;">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // ==================== GOOGLE APPS SCRIPT CONFIGURATION ====================
+    // IMPORTANT: Replace this URL with your deployed Google Apps Script web app URL
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDvvheKuMWsJiQ0hKdQt8V3WX6gyoMwngNQvis3JJS24I8StyiT7U8L2alwiOtJKb7/exec";
+    // After deploying the Apps Script, paste the web app URL above
+
+    // ==================== HELPER FUNCTIONS ====================
+    document.addEventListener("DOMContentLoaded", () => {
+      // ===== SHOW / HIDE PASSWORD TOGGLE =====
+      const toggleEye = document.getElementById("toggleEye");
+      const codeInputEye = document.getElementById("codeInput");
+
+      toggleEye.addEventListener("click", () => {
+        if (codeInputEye.type === "password") {
+          codeInputEye.type = "text";
+          toggleEye.textContent = "🙈";
+        } else {
+          codeInputEye.type = "password";
+          toggleEye.textContent = "👁️";
+        }
+      });
+
+      // ===== Display filename on login page =====
+      const quizTitleEl = document.querySelector("#quizSection h1");
+      const displayFileName = quizTitleEl ? quizTitleEl.textContent.replace("Quiz Time! 📝", "").replace("📝", "").trim() : "Science Grade 6";
+      const fileDisplay = document.getElementById("fileDisplay");
+      if (fileDisplay) fileDisplay.textContent = displayFileName;
+
+      // ===== ELEMENTS =====
+      const accessSection = document.getElementById("accessSection");
+      const mainContent = document.getElementById("mainContent");
+      const codeInput = document.getElementById("codeInput");
+      const accessSubmit = document.getElementById("accessSubmit");
+      const message = document.getElementById("message");
+      const tipsArea = document.getElementById("tipsArea");
+
+      // ===============================
+      // CONTACT MODAL LOGIC
+      // ===============================
+      const contactLink = document.getElementById("contactLink");
+      const contactBG = document.getElementById("contactModalBG");
+      const contactClose = document.getElementById("c_close");
+      const contactSubmit = document.getElementById("c_submit");
+
+      if (contactLink && contactBG) {
+        contactLink.addEventListener("click", () => {
+          contactBG.style.display = "block";
+        });
+      }
+
+      if (contactClose && contactBG) {
+        contactClose.addEventListener("click", () => {
+          contactBG.style.display = "none";
+        });
+      }
+
+      // ===============================
+      // CONTACT SUBMISSION LOGIC
+      // ===============================
+      if (contactSubmit) {
+        contactSubmit.addEventListener("click", async () => {
+          const name = document.getElementById("c_name").value.trim();
+          const contact = document.getElementById("c_contact").value.trim();
+          const social = document.getElementById("c_social").value.trim();
+          const request = document.getElementById("c_request").value.trim();
+
+          if (!name || !contact || !request) {
+            alert("Please fill out name, contact, and request/comment.");
+            return;
+          }
+
+          const quizTitleElLocal = document.querySelector("#quizSection h1");
+          const fileName = quizTitleElLocal
+            ? quizTitleElLocal.textContent.replace("Quiz Time! 📝", "").replace("📝", "").trim()
+            : "Science Grade 6";
+
+          const deviceInfo = await getDeviceInfo();
+
+          try {
+            contactSubmit.disabled = true;
+            contactSubmit.innerHTML = '<span class="loading"></span> Sending...';
+
+            await fetch(GOOGLE_SCRIPT_URL, {
+              method: "POST",
+              redirect: 'follow',
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: JSON.stringify({
+                action: "saveContact",
+                data: {
+                  event: "Client Request",
+                  request,
+                  name,
+                  contact,
+                  social,
+                  filename: fileName,
+                  timestamp: new Date().toLocaleString(),
+                  device: deviceInfo
+                }
+              })
+            });
+
+            alert("✅ Message sent successfully!");
+            contactBG.style.display = "none";
+            
+            // Clear form
+            document.getElementById("c_name").value = "";
+            document.getElementById("c_contact").value = "";
+            document.getElementById("c_social").value = "";
+            document.getElementById("c_request").value = "";
+
+          } catch (err) {
+            alert("❌ Error sending message. Please try again.");
+            console.error(err);
+          } finally {
+            contactSubmit.disabled = false;
+            contactSubmit.textContent = "Send Message";
+          }
+        });
+      }
+
+      // ===== DEVICE INFO HELPER =====
+      async function getDeviceInfo() {
+        const uaData = navigator.userAgentData || {};
+        const ua = navigator.userAgent;
+        const platform = navigator.platform;
+        const language = navigator.language;
+        const screenResolution = `${window.screen.width}x${window.screen.height}`;
+        const browserVersion = uaData.brands
+          ? uaData.brands.map(b => `${b.brand} ${b.version}`).join(", ")
+          : ua;
+
+        const uaLower = ua.toLowerCase();
+        let deviceType = "desktop";
+        if (/mobi|iphone|android/i.test(uaLower)) {
+          deviceType = "mobile";
+        } else if (/tablet|ipad|nexus 7|nexus 10/i.test(uaLower)) {
+          deviceType = "tablet";
+        }
+
+        let networkInfo = "Unavailable";
+        try {
+          const res = await fetch("https://ipapi.co/json/");
+          if (res.ok) {
+            const info = await res.json();
+            networkInfo = {
+              ip: info.ip,
+              city: info.city,
+              region: info.region,
+              country: info.country_name,
+              org: info.org
+            };
+          }
+        } catch {
+          networkInfo = "Network lookup failed";
+        }
+
+        return {
+          ua,
+          browserVersion,
+          platform,
+          language,
+          screenResolution,
+          deviceType,
+          networkInfo
+        };
+      }
+
+      // ===== SAVE LOGIN TO GOOGLE SHEETS =====
+      async function saveLoginToGoogleSheets(codeUsed) {
+        try {
+          const quizTitleElLocal = document.querySelector("#quizSection h1");
+          const fileName = quizTitleElLocal 
+            ? quizTitleElLocal.textContent.replace("Quiz Time! 📝", "").replace("📝", "").trim() 
+            : "Science Grade 6";
+
+          const deviceInfo = await getDeviceInfo();
+
+          const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            redirect: 'follow',
+            headers: { 
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: JSON.stringify({
+              action: "saveLogin",
+              data: {
+                event: "Login Access",
+                accessCode: codeUsed,
+                filename: fileName,
+                timestamp: new Date().toLocaleString(),
+                device: deviceInfo
+              }
+            })
+          });
+
+          console.log(`✅ Login logged successfully (file: ${fileName}).`);
+        } catch (err) {
+          console.error("❌ Error logging to Google Sheets:", err);
+          // Don't show error to user - logging is not critical
+        }
+      }
+
+      // ===== LOAD TIPS FROM GOOGLE SHEETS =====
+      async function loadTips() {
+        try {
+          // First check if URL is configured
+          if (GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+            tipsArea.innerHTML = 
+              "⚠️ <strong>Configuration Required:</strong><br>" +
+              "Please set up your Google Apps Script URL in the HTML file.<br>" +
+              "See SETUP_GUIDE.md for instructions.";
+            return;
+          }
+
+          const resp = await fetch(`${GOOGLE_SCRIPT_URL}?action=getTips`, {
+            method: 'GET',
+            redirect: 'follow'
+          });
+          
+          if (!resp.ok) {
+            throw new Error(`HTTP error! status: ${resp.status}`);
+          }
+          
+          const data = await resp.json();
+          
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          
+          const tipsText = data.tips || 
+            "💡 <strong>Tips:</strong><br>" +
+            "✅ Press Enter after typing the code.<br>" +
+            "✅ Stay online when entering.<br>" +
+            "✅ For help, contact: @Rekz Banz";
+          
+          tipsArea.innerHTML = tipsText;
+        } catch (err) {
+          console.error("Tips fetch error:", err);
+          tipsArea.innerHTML = 
+            "⚠️ <strong>Connection Error:</strong><br>" +
+            "Could not connect to Google Sheets.<br>" +
+            `Error: ${err.message}<br>` +
+            "Please check:<br>" +
+            "1. Google Script URL is correct<br>" +
+            "2. Script is deployed as Web App<br>" +
+            "3. Access is set to 'Anyone'";
+        }
+      }
+      loadTips();
+
+      // ===== SAVE QUIZ SCORE TO GOOGLE SHEETS =====
+      async function saveScoreToGoogleSheets(score, total) {
+        try {
+          const quizTitleElLocal = document.querySelector("#quizSection h1");
+          const fileName = quizTitleElLocal 
+            ? quizTitleElLocal.textContent.replace("Quiz Time! 📝", "").replace("📝", "").trim() 
+            : "Science Grade 6";
+
+          const deviceInfo = await getDeviceInfo();
+
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            redirect: 'follow',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: JSON.stringify({
+              action: "saveScore",
+              data: {
+                event: "Quiz Score",
+                score: `${score}/${total}`,
+                filename: fileName,
+                timestamp: new Date().toLocaleString(),
+                device: deviceInfo
+              }
+            })
+          });
+
+          console.log("✅ Quiz score saved to Google Sheets successfully.");
+        } catch (err) {
+          console.error("❌ Error saving quiz score:", err);
+          // Don't show error to user - logging is not critical
+        }
+      }
+
+      // ===== LOCAL STORAGE =====
+      const fileName = window.location.pathname.split("/").pop() || "default";
+      const storageKey = "savedAccessCode_" + fileName.replace(/\W+/g, "_");
+      const savedCode = localStorage.getItem(storageKey);
+      if (savedCode) codeInput.value = savedCode;
+      codeInput.addEventListener("input", () =>
+        localStorage.setItem(storageKey, codeInput.value)
+      );
+
+      // ===== LOGIN HANDLER =====
+      codeInput.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") accessSubmit.click();
+      });
+
+      accessSubmit.addEventListener("click", async () => {
+        const input = codeInput.value.trim();
+        if (!input) {
+          message.textContent = "⚠️ Please enter the access code.";
+          return;
+        }
+
+        // Check if URL is configured
+        if (GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+          message.innerHTML = "⚠️ <strong>Setup Required:</strong><br>Google Apps Script URL not configured. See SETUP_GUIDE.md";
+          return;
+        }
+
+        accessSubmit.disabled = true;
+        codeInput.disabled = true;
+        message.innerHTML = '<span class="loading"></span> Checking...';
+
+        try {
+          console.log('Fetching access code from:', GOOGLE_SCRIPT_URL);
+          
+          const resp = await fetch(`${GOOGLE_SCRIPT_URL}?action=getAccessCode`, {
+            method: 'GET',
+            redirect: 'follow'
+          });
+          
+          console.log('Response status:', resp.status);
+          
+          if (!resp.ok) {
+            throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
+          }
+          
+          const data = await resp.json();
+          console.log('Response data:', data);
+
+          if (data.error) {
+            throw new Error(data.error);
+          }
+
+          const remoteCode = data.accessCode;
+
+          if (!remoteCode) {
+            message.innerHTML = "❌ Access code not found in Google Sheets.<br>Please check the AccessCode sheet.";
+            throw new Error("No accessCode in response");
+          }
+
+          if (input === String(remoteCode).trim()) {
+            accessSection.style.display = "none";
+            mainContent.style.display = "block";
+            message.textContent = "";
+            saveLoginToGoogleSheets(input);
+            setTimeout(() => {
+              const btn = document.querySelector("#mainContent button");
+              if (btn) btn.focus();
+            }, 100);
+          } else {
+            message.innerHTML = `❌ Wrong code. Entered: "${input}"<br>Please contact support.`;
+            localStorage.removeItem(storageKey);
+            accessSubmit.disabled = false;
+            codeInput.disabled = false;
+          }
+        } catch (err) {
+          console.error("Access fetch error:", err);
+          message.innerHTML = 
+            `❌ <strong>Connection Error:</strong><br>` +
+            `${err.message}<br>` +
+            `Please verify:<br>` +
+            `1. Google Script URL is correct<br>` +
+            `2. Script is deployed as Web App<br>` +
+            `3. Access permission is 'Anyone'`;
+          accessSubmit.disabled = false;
+          codeInput.disabled = false;
+        }
+      });
+
+      // ===== QUIZ LOGIC =====
+      const pool = [
+        {q: "What is an earthquake?", choices: [
+          "A sudden and violent shaking of the ground",
+          "A slow movement of soil",
+          "A steady flow of lava",
+          "A change in weather",
+          "A rise in sea level",
+          "A volcanic explosion only"
+        ], correctIndex: 0},
+
+        {q: "What instrument measures earthquakes?", choices: [
+          "Thermometer",
+          "Barometer",
+          "Seismometer",
+          "Anemometer",
+          "Hygrometer",
+          "Altimeter"
+        ], correctIndex: 2},
+
+        {q: "What is the origin of an earthquake called?", choices: [
+          "Epicenter",
+          "Fault",
+          "Focus",
+          "Mantle",
+          "Crater",
+          "Conduit"
+        ], correctIndex: 2},
+
+        {q: "What is the area directly above the focus?", choices: [
+          "Mantle",
+          "Crater",
+          "Epicenter",
+          "Fault",
+          "Plate",
+          "Conduit"
+        ], correctIndex: 2},
+
+        {q: "Which scale measures earthquake magnitude?", choices: [
+          "Mercalli Scale",
+          "Richter Scale",
+          "Kelvin Scale",
+          "Celsius Scale",
+          "Fahrenheit Scale",
+          "Beaufort Scale"
+        ], correctIndex: 1},
+
+        {q: "Which scale measures earthquake intensity?", choices: [
+          "Richter Scale",
+          "Beaufort Scale",
+          "Mercalli Scale",
+          "Celsius Scale",
+          "Kelvin Scale",
+          "Fahrenheit Scale"
+        ], correctIndex: 2},
+
+        {q: "What is a fault?", choices: [
+          "A break in the Earth's crust",
+          "A type of volcano",
+          "A layer of soil",
+          "A gas released from magma",
+          "A measuring device",
+          "A plate boundary"
+        ], correctIndex: 0},
+
+        {q: "What kind of earthquake is caused by plate movement?", choices: [
+          "Volcanic",
+          "Tectonic",
+          "Weather-related",
+          "Artificial",
+          "Oceanic",
+          "Thermal"
+        ], correctIndex: 1},
+
+        {q: "Where do tectonic plates collide?", choices: [
+          "Divergent boundary",
+          "Transform boundary",
+          "Convergent boundary",
+          "Mantle boundary",
+          "Core boundary",
+          "Surface boundary"
+        ], correctIndex: 2},
+
+        {q: "What occurs when plates move apart?", choices: [
+          "Convergent boundary",
+          "Transform boundary",
+          "Divergent boundary",
+          "Epicenter",
+          "Fault",
+          "Crater"
+        ], correctIndex: 2},
+
+        {q: "What occurs when plates slide past each other?", choices: [
+          "Convergent boundary",
+          "Divergent boundary",
+          "Transform boundary",
+          "Volcanic eruption",
+          "Crater formation",
+          "Lava flow"
+        ], correctIndex: 2},
+
+        {q: "What is magma?", choices: [
+          "Molten rock beneath the Earth's surface",
+          "Molten rock on the surface",
+          "Solid rock",
+          "A type of gas",
+          "A type of ash",
+          "A plate boundary"
+        ], correctIndex: 0},
+
+        {q: "What is lava?", choices: [
+          "Magma beneath the surface",
+          "Molten rock on the Earth's surface",
+          "Solidified ash",
+          "A type of gas",
+          "Earth's crust",
+          "Mantle material"
+        ], correctIndex: 1},
+
+        {q: "What is a volcano?", choices: [
+          "A crack in the Earth's surface",
+          "A type of earthquake",
+          "A plate boundary",
+          "A measuring tool",
+          "A fault line",
+          "A mountain range"
+        ], correctIndex: 0},
+
+        {q: "What increases during a volcanic eruption?", choices: [
+          "Temperature only",
+          "Gas pressure",
+          "Sea level",
+          "Wind speed",
+          "Humidity",
+          "Rainfall"
+        ], correctIndex: 1},
+
+        {q: "Where does magma collect before eruption?", choices: [
+          "Crater",
+          "Magma chamber",
+          "Epicenter",
+          "Fault",
+          "Conduit",
+          "Mantle"
+        ], correctIndex: 1},
+
+        {q: "What is the opening of a volcano called?", choices: [
+          "Epicenter",
+          "Fault",
+          "Crater",
+          "Focus",
+          "Mantle",
+          "Plate"
+        ], correctIndex: 2},
+
+        {q: "What carries magma to the surface?", choices: [
+          "Fault",
+          "Plate",
+          "Conduit",
+          "Epicenter",
+          "Crust",
+          "Mantle"
+        ], correctIndex: 2},
+
+        {q: "What type of earthquake is linked to volcanic activity?", choices: [
+          "Tectonic",
+          "Volcanic",
+          "Weather-based",
+          "Oceanic",
+          "Thermal",
+          "Artificial"
+        ], correctIndex: 1},
+
+        {q: "Which material is ejected during volcanic eruption?", choices: [
+          "Ice",
+          "Sand",
+          "Lava",
+          "Soil",
+          "Water only",
+          "Metal"
+        ], correctIndex: 2},
+
+        {q: "Where does magma originate?", choices: [
+          "Crust only",
+          "Mantle",
+          "Core",
+          "Atmosphere",
+          "Ocean floor",
+          "Surface soil"
+        ], correctIndex: 1},
+
+        {q: "What happens to gases as magma rises?", choices: [
+          "They freeze",
+          "They disappear",
+          "They expand",
+          "They solidify",
+          "They condense",
+          "They cool instantly"
+        ], correctIndex: 2},
+
+        {q: "What event causes ground shaking?", choices: [
+          "Volcanic eruption only",
+          "Earthquake",
+          "Rainfall",
+          "Windstorm",
+          "Flood",
+          "Tsunami"
+        ], correctIndex: 1},
+
+        {q: "What flows on the surface after eruption?", choices: [
+          "Magma",
+          "Lava",
+          "Ash only",
+          "Steam",
+          "Gas",
+          "Rock fragments only"
+        ], correctIndex: 1},
+
+        {q: "What boundary causes tectonic earthquakes?", choices: [
+          "Weather boundary",
+          "Plate boundary",
+          "Ocean boundary",
+          "Atmospheric boundary",
+          "Soil boundary",
+          "Thermal boundary"
+        ], correctIndex: 1},
+
+        {q: "What results from earthquake movement?", choices: [
+          "Changes on Earth's surface",
+          "Weather change",
+          "Sea tides",
+          "Moon phases",
+          "Climate shift",
+          "Magnetic reversal"
+        ], correctIndex: 0},
+
+        {q: "What happens when magma explodes?", choices: [
+          "It cools underground",
+          "It flows back to mantle",
+          "It exits through the crater",
+          "It disappears",
+          "It hardens instantly underground",
+          "It forms soil"
+        ], correctIndex: 2},
+
+        {q: "What is intensity related to?", choices: [
+          "Energy released",
+          "Degree of destruction",
+          "Speed of magma",
+          "Depth of mantle",
+          "Plate size",
+          "Crust thickness"
+        ], correctIndex: 1},
+
+        {q: "Which event can damage roads and houses?", choices: [
+          "Rain",
+          "Earthquake",
+          "Cloud formation",
+          "Wind",
+          "Humidity",
+          "Dew"
+        ], correctIndex: 1}
+      ];
+
+      // === UPDATE QUIZ TITLE (selected/total items) ===
+      function updateQuizTitleCount(selectedCount) {
+        const quizTitleEl = document.querySelector("#quizSection h1");
+        if (quizTitleEl) {
+          const totalItems = pool.filter(item => item && item.q && item.choices).length;
+          quizTitleEl.innerHTML = `📝 Quiz Time! 📝<br>Science 6 - Quarter 4 Module 1<br><span style="font-size: 0.7em; color: #667eea;">(${selectedCount}/${totalItems} items)</span>`;
+        }
+      }
+
+      function pickRandom(arr, n) {
+        const copy = [...arr];
+        const result = [];
+        while (result.length < n && copy.length > 0) {
+          const idx = Math.floor(Math.random() * copy.length);
+          result.push(copy.splice(idx, 1)[0]);
+        }
+        return result;
+      }
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      function selectRandomChoices(item) {
+        const correctChoice = item.choices[item.correctIndex];
+        let others = item.choices.filter((_, idx) => idx !== item.correctIndex);
+        shuffleArray(others);
+        let selected = [correctChoice, ...others.slice(0, 4)];
+        shuffleArray(selected);
+        item.correctIndex = selected.indexOf(correctChoice);
+        item.choices = selected;
+      }
+
+      let quizItems = [];
+
+      window.showQuiz = function () {
+        document.getElementById("reviewerSection").style.display = "none";
+        document.getElementById("quizSection").style.display = "block";
+        buildQuiz();
+      };
+
+      window.backToReviewer = function () {
+        document.getElementById("quizSection").style.display = "none";
+        document.getElementById("reviewerSection").style.display = "block";
+        document.getElementById("quizForm").innerHTML = "";
+        document.getElementById("result").innerHTML = "";
+      };
+
+      window.refreshQuiz = function () {
+        document.getElementById("quizForm").innerHTML = "";
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("finishBtn").disabled = false;
+        buildQuiz();
+      };
+
+      function buildQuiz() {
+        quizItems = pickRandom(pool, Math.min(10, pool.length));
+        const form = document.getElementById("quizForm");
+        form.innerHTML = "";
+        quizItems.forEach((item, i) => {
+          selectRandomChoices(item);
+          const div = document.createElement("div");
+          div.className = "question";
+          const q = document.createElement("p");
+          q.textContent = `${i + 1}. ${item.q}`;
+          div.appendChild(q);
+          item.choices.forEach((choice, idx) => {
+            const label = document.createElement("label");
+            const radio = document.createElement("input");
+            radio.type = "radio";
+            radio.name = `q${i}`;
+            radio.value = idx;
+            label.appendChild(radio);
+            label.appendChild(document.createTextNode(" " + choice));
+            div.appendChild(label);
+            div.appendChild(document.createElement("br"));
+          });
+          form.appendChild(div);
+        });
+        updateQuizTitleCount(quizItems.length);
+      }
+
+      document.getElementById("finishBtn").addEventListener("click", async function () {
+        let score = 0;
+        const total = quizItems.length;
+        for (let i = 0; i < total; i++) {
+          const radios = document.querySelectorAll(`input[name="q${i}"]`);
+          let selected = -1;
+          radios.forEach(r => { if (r.checked) selected = parseInt(r.value); });
+          const div = document.getElementById("quizForm").children[i];
+          if (selected === quizItems[i].correctIndex) {
+            score++;
+            div.insertAdjacentHTML("beforeend", "<div class='correct'>✔ Correct! Great job!</div>");
+          } else {
+            const correctAnswer = quizItems[i].choices[quizItems[i].correctIndex];
+            div.insertAdjacentHTML("beforeend", `<div class='wrong'>✘ Oops! The answer is: ${correctAnswer}</div>`);
+          }
+          radios.forEach(r => r.disabled = true);
+        }
+        
+        const percentage = Math.round((score / total) * 100);
+        let emoji = "🎉";
+        if (percentage === 100) emoji = "🏆";
+        else if (percentage >= 80) emoji = "⭐";
+        else if (percentage >= 60) emoji = "👍";
+        else emoji = "💪";
+        
+        document.getElementById("result").innerHTML = 
+          `<h2>${emoji} Your Score: ${score} / ${total} ${emoji}</h2>
+           <p style="font-size: 1.5em; margin-top: 10px;">${percentage}% Correct!</p>`;
+        this.disabled = true;
+
+        // Save score to Google Sheets
+        await saveScoreToGoogleSheets(score, total);
+      });
+    });
+  </script>
+</body>
+</html>
