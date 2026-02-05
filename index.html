@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Science Quiz for Kids! 🌍</title>
+  <title>🌍 Science Quiz for Kids!</title>
+  <!-- Google Fonts - Playful fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,7 +16,7 @@
     }
 
     body {
-      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Bubblegum Sans', 'Fredoka', cursive;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #2d3748;
       min-height: 100vh;
@@ -29,19 +30,75 @@
       border-radius: 25px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       overflow: hidden;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .header {
       background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      padding: 30px;
+      padding: 40px 30px;
       text-align: center;
       color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .emoji-banner {
+      font-size: 3.5em;
+      margin-bottom: 15px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .header h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+      font-family: 'Bubblegum Sans', 'Fredoka', cursive;
     }
 
     .header .emoji {
@@ -63,12 +120,14 @@
       margin-bottom: 20px;
       color: #667eea;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      animation: bounce 2s ease-in-out infinite;
     }
 
     #accessSection h2 {
       font-size: 1.5em;
       color: #4a5568;
       margin-bottom: 20px;
+      font-family: 'Fredoka', cursive;
     }
 
     .password-container {
@@ -83,7 +142,7 @@
       width: 300px;
       border-radius: 15px;
       border: 3px solid #667eea;
-      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Fredoka', cursive;
       transition: all 0.3s;
     }
 
@@ -101,6 +160,11 @@
       cursor: pointer;
       font-size: 24px;
       user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    #toggleEye:hover {
+      transform: translateY(-50%) scale(1.2);
     }
 
     .btn {
@@ -115,7 +179,7 @@
       margin: 10px;
       transition: all 0.3s;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Bubblegum Sans', 'Fredoka', cursive;
     }
 
     .btn:hover {
@@ -154,10 +218,12 @@
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
+      transition: all 0.3s ease;
     }
 
     #contactLink:hover {
       color: #f5576c;
+      transform: scale(1.05);
     }
 
     #message {
@@ -184,6 +250,8 @@
       color: #667eea;
       margin-bottom: 20px;
       text-align: center;
+      font-family: 'Bubblegum Sans', 'Fredoka', cursive;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     /* Reviewer Section */
@@ -192,7 +260,32 @@
       margin-bottom: 15px;
       border-radius: 15px;
       overflow: hidden;
-      border: 3px solid #667eea;
+      border: 4px solid transparent;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .reviewer details::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .reviewer details:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-color: #667eea;
+    }
+
+    .reviewer details:hover::before {
+      opacity: 1;
     }
 
     .reviewer summary {
@@ -203,6 +296,8 @@
       background: rgba(255, 255, 255, 0.5);
       transition: all 0.3s;
       color: #2d3748;
+      position: relative;
+      z-index: 1;
     }
 
     .reviewer summary:hover {
@@ -368,7 +463,7 @@
       border: 2px solid #cbd5e0;
       border-radius: 10px;
       font-size: 16px;
-      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Fredoka', cursive;
       transition: all 0.3s;
     }
 
@@ -428,8 +523,10 @@
 <body>
   <div class="container">
     <div class="header">
-      <div class="emoji">🌍 🔬 ⚗️</div>
-      <h1>Science Adventure!</h1>
+      <div class="header-content">
+        <div class="emoji-banner">🌍 🔬 ⚗️</div>
+        <h1>Science Adventure!</h1>
+      </div>
     </div>
 
     <div class="content">
