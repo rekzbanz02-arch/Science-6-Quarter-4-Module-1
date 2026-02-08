@@ -1352,6 +1352,7 @@
         document.getElementById("reviewerSection").style.display = "none";
         document.getElementById("quizSection").style.display = "block";
         buildQuiz();
+        window.scrollTo(0, 0)
       };
 
       window.backToReviewer = function () {
@@ -1359,6 +1360,7 @@
         document.getElementById("reviewerSection").style.display = "block";
         document.getElementById("quizForm").innerHTML = "";
         document.getElementById("result").innerHTML = "";
+        window.scrollTo(0, 0)
       };
 
       window.refreshQuiz = function () {
@@ -1366,6 +1368,7 @@
         document.getElementById("result").innerHTML = "";
         document.getElementById("finishBtn").disabled = false;
         buildQuiz();
+        window.scrollTo(0, 0)
       };
 
       function buildQuiz() {
